@@ -1,6 +1,0 @@
-- Category (id, name, description)
-- Book(id, name, type, catID, description, price, featured, active)
-- Address (zip, country, city, street, notes)
-- User(id, firstName, lastName, email, address:Address, active)
-- Order (id, customerID, productID, amount, status:new|shipped|paid)
-- Bill (id, orderID, amount, status:new|paid) 
