@@ -20,8 +20,11 @@ Pages
 	- list
 	- edit/create/delete -> admin
 - Users
-	- list
+	- list -> admin
+	- View/Edit Profile -> self
+	- Register
+- Orders
+	- list -> admin?
 
-- Edit Profile
 - Login
-- Register
+- Logout

@@ -1,8 +1,8 @@
 const createError = require('http-errors');
-const service = require('../services/user.service');
-const model = require('../models/user.model');
+const service = require('../services/author.service');
+const model = require('../models/author.model');
 
-exports.register = (req, res, next) => {
+exports.create = (req, res, next) => {
     const validationErrors = new model(req.body).validateSync();
     if (validationErrors) {
         return next(new createError.BadRequest(validationErrors));
@@ -22,7 +22,7 @@ exports.findOne = (req, res, next) => {
     return service.findOne(req.params.id)
         .then(entity => {
             if (!entity) {
-                return next(new createError.NotFound("User not found"));
+                return next(new createError.NotFound("Author not found"));
             }
             return res.json(entity);
         });
@@ -36,5 +36,11 @@ exports.update = (req, res, next) => {
 
     return service.update(req.params.id, req.body)
         .then(entity => res.json(entity))
+        .catch(err => next(new createError.InternalServerError(err.message)));
+};
+
+exports.delete = (req, res, next) => {
+    return service.delete(req.params.id)
+        .then(() => res.json({}))
         .catch(err => next(new createError.InternalServerError(err.message)));
 };

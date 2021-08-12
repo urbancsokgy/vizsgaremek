@@ -4,29 +4,20 @@ const OrderSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        required: true
     },
-    products: {
+    book: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Product',
+        ref: 'Book',
+        required: true
     },
-    time: {
-        type: Date,
-        default: new Date(),
-    },
-    note: String,
+    amount: {
+        type: Number,
+        default: 1,
+        min: 1
+    }
 }, {
     timestamps: true
 });
 
 module.exports = mongoose.model('Order', OrderSchema);
-
-/*
-export class Order {
-  _id: string = '';
-  user: User = new User();
-  products: Product[] = [];
-  time: Date = new Date();
-  note: string = '';
-}
-*/
