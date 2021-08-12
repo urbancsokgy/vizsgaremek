@@ -11,22 +11,30 @@ const BookSchema = mongoose.Schema({
         required: true
     },
     quantity: {
-        type: String,
+        type: Number,
         required: true,
         default: 0,
         min: 0
     },
     category: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
     },
     author: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Author',
         required: true
     }
 }, {
     timestamps: true
 });
+// ----------------------
+const Book = mongoose.model('Book', BookSchema, 'books')
+Book.createCollection().then(function(collection) {
+    collection.name='books'
+    console.log('Collection is created!');
+    console.log('Collection name!', collection.name);
 
+  });
+//---------------------
 module.exports = mongoose.model('Book', BookSchema);

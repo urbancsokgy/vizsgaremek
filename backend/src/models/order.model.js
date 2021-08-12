@@ -7,7 +7,7 @@ const OrderSchema = mongoose.Schema({
         required: true
     },
     book: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Book',
         required: true
     },
@@ -19,5 +19,15 @@ const OrderSchema = mongoose.Schema({
 }, {
     timestamps: true
 });
+
+// ----------------------
+const Order = mongoose.model('Order', OrderSchema, 'orders')
+Order.createCollection().then(function(collection) {
+    collection.name='orders'
+    console.log('Collection is created!');
+    console.log('Collection name!', collection.name);
+
+  });
+//---------------------
 
 module.exports = mongoose.model('Order', OrderSchema);

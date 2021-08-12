@@ -7,9 +7,9 @@ module.exports = (req, res, next) => {
     if (authHeader) {
         // Bearer lskdfjlkdsjfldsjflsdfj
         const token = authHeader.split(' ')[1];
-        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, userData) => {
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, userData) => {
             if (!err) {
-                const user = UserModel.findOne({ email: userData.email });
+                const user = await UserModel.findOne({ email: userData.email });
                 if (user) {
                     req.user = user;
                     return next();

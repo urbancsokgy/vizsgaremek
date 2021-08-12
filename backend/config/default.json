@@ -1,5 +1,8 @@
+  
 {
     "database": {
-        "host": "localhost:27017/bookstoreDB?retryWrites=true&w=majority"
+        "username": "dbUser",
+        "password": "a5wh61d5kj8Jtewl",
+        "host": "mongo:27017/bookstoreDB?retryWrites=true&w=majority"
     }
 }

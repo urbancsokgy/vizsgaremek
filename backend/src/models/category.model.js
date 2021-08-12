@@ -8,5 +8,13 @@ const CategorySchema = mongoose.Schema({
 }, {
     timestamps: true
 });
+// ----------------------
+const Category = mongoose.model('Category', CategorySchema, 'category')
+Category.createCollection().then(function(collection) {
+    collection.name='category'
+    console.log('Collection is created!');
+    console.log('Collection name!', collection.name);
 
+  });
+//---------------------
 module.exports = mongoose.model('Category', CategorySchema);

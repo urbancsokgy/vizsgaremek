@@ -13,5 +13,14 @@ const AuthorSchema = mongoose.Schema({
 }, {
     timestamps: true
 });
+// ----------------------
+const Author = mongoose.model('Author', AuthorSchema, 'author')
+Author.createCollection().then(function(collection) {
+    collection.name='author'
+    console.log('Collection is created!');
+    console.log('Collection name!', collection.name);
+
+  });
+//---------------------
 
 module.exports = mongoose.model('Author', AuthorSchema);
