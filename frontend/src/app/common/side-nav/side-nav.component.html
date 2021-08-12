@@ -1,0 +1,42 @@
+<div id="layoutSidenav_nav">
+  <nav
+    class="sb-sidenav accordion sb-sidenav-light"
+    id="sidenavAccordion"
+  >
+    <div class="sb-sidenav-menu">
+      <div class="nav">
+        <ng-container *ngIf="user$ | async; else notLoggedInNav">
+          <div class="sb-sidenav-menu-heading">Core</div>
+          <a class="nav-link" routerLink="/">
+            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <span>Dashboard</span>
+          </a>
+          <div class="sb-sidenav-menu-heading">Data</div>
+          <a class="nav-link" routerLink="/users">
+            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+            <span>Users</span>
+          </a>
+        </ng-container>
+        <ng-template #notLoggedInNav>
+          <div class="sb-sidenav-menu-heading">User</div>
+          <a class="nav-link" routerLink="/login">
+            <div class="sb-nav-link-icon"><i class="fas fa-sign-in-alt"></i></div>
+            <span>Log In</span>
+          </a>
+          <a class="nav-link" routerLink="/register">
+            <div class="sb-nav-link-icon"><i class="fas fa-user-plus"></i></div>
+            <span>Register</span>
+          </a>
+        </ng-template>
+      </div>
+    </div>
+    <div class="sb-sidenav-footer">
+      <div *ngIf="(user$ | async); else notLoggedIn">
+        <div class="small">Logged in as:</div><span>{{ (user$ | async)?.email }}</span>
+      </div>
+      <ng-template #notLoggedIn>
+        <div class="small">Please log in or register</div>
+      </ng-template>
+    </div>
+  </nav>
+</div>

@@ -44,7 +44,7 @@ module.exports.login = async (req, res) => {
         });
 
     } catch(e) {
-        res.send('Username or password incorrect.');
+        res.sendStatus(401);
     }
 
 };
