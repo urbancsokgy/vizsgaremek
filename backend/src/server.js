@@ -10,17 +10,30 @@ const mongoose = require('mongoose');
 const cors = require('./config/cors');
 mongoose.Promise = global.Promise;
 
-const { host } = config.get('database');
-mongoose
-    .connect(`mongodb://${host}`, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => logger.info('MongoDB connection has been established successfully.'))
-    .catch(err => {
-        logger.error(err);
-        process.exit();
-    });
+// const { host } = config.get('database');
+// mongoose
+//     .connect(`mongodb://${host}`, {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//     })
+//     .then(() => logger.info('MongoDB connection has been established successfully.'))
+//     .catch(err => {
+//         logger.error(err);
+//         process.exit();
+//     });
+
+const Connection_String =
+  `mongodb+srv://vizsgaremek:${process.env.DB_PASSW}@cluster0.1egzp.mongodb.net/bookstoreDB?retryWrites=true&w=majority`
+  //"mongodb+srv://urbancsokgy:DiPqHPyh6k5MEfV9@cluster0.xxaol.mongodb.net/chats?retryWrites=true&w=majority";
+const options = {
+  useNewUrlParser: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+};
+const connectionCallback = () => {
+  console.log("Connection OK");
+};
+mongoose.connect(Connection_String, options, connectionCallback);
 
 app.use(cors());
 app.use(morgan('combined', { stream: logger.stream }));
