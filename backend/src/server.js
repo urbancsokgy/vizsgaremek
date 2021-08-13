@@ -25,7 +25,6 @@ mongoose.Promise = global.Promise;
 // Felhő kapcsolat
 const Connection_String =
   `mongodb+srv://vizsgaremek:${process.env.DB_PASSW}@cluster0.1egzp.mongodb.net/bookstoreDB?retryWrites=true&w=majority`
-  //"mongodb+srv://urbancsokgy:DiPqHPyh6k5MEfV9@cluster0.xxaol.mongodb.net/chats?retryWrites=true&w=majority";
 const options = {
   useNewUrlParser: true,
   useNewUrlParser: true,
