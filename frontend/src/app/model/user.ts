@@ -1,20 +1,26 @@
+export interface Address {
+  country: string;
+  city: string;
+  zip: number;
+  building: number;
+}
+
 export interface LoginData {
   email: string;
   password: string;
 }
 
-export class Address {
-  country: string = 'Magyarország';
-  city: string = '';
-  zip: number = -1;
-  building: number = -1;
+export interface SignUpData extends LoginData {
+  firstName: string;
+  lastName: string;
+  address: Address;
 }
 
-export class User {
-  _id: string = '';
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
-  address = new Address();
-  role: string = '';
+export interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: Address;
+  role: string;
 }

@@ -15,10 +15,11 @@ import { NavigationComponent } from './common/navigation/navigation.component';
 import { SideNavComponent } from './common/side-nav/side-nav.component';
 import { UsersComponent } from './page/users/users.component';
 import { DataTableComponent } from './common/data-table/data-table.component';
-import { XPipePipe } from './pipe/x-pipe.pipe';
 import { LoginComponent } from './page/login/login.component';
 import { JwtInterceptorInterceptor } from './service/jwt-interceptor.interceptor';
 import { NotFoundComponent } from './page/not-found/not-found.component';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { SignupComponent } from './page/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,10 @@ import { NotFoundComponent } from './page/not-found/not-found.component';
     SideNavComponent,
     UsersComponent,
     DataTableComponent,
-    XPipePipe,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DashboardComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

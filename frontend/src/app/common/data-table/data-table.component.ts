@@ -1,29 +1,42 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ConfigService, ITableColumn } from 'src/app/service/config.service';
+
+export interface IDataTableColumn<T> {
+  title: string;
+  value: (model: T) => string;
+}
 
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent<T extends {[propname: string]: any}> implements OnInit {
+export class DataTableComponent<T> implements OnInit {
 
   @Input() title: string = 'Data list';
-  @Input() tableColumns: ITableColumn[] = [];
+  @Input() tableColumns: IDataTableColumn<T>[] = [];
   @Input() list$: Observable<T[]> | null = null;
 
-  // 1.
-  @Output() selectOne: EventEmitter<T> = new EventEmitter<T>();
+  @Input() editAvailable = true;
+  @Input() deleteAvailable = true;
+
+  @Output() edit = new EventEmitter<T>();
+  @Output() delete = new EventEmitter<T>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  // 2.
-  onSelect(entity: T): void {
-    this.selectOne.emit(entity);
+  get buttonsAvailable(): boolean {
+    return this.editAvailable || this.deleteAvailable;
   }
 
+  onEdit(entity: T): void {
+    this.edit.emit(entity);
+  }
+
+  onDelete(entity: T): void {
+    this.delete.emit(entity);
+  }
 }

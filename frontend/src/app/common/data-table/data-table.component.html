@@ -6,29 +6,27 @@
       <thead>
         <tr>
           <th *ngFor="let col of tableColumns"> {{ col.title }} </th>
-          <th></th>
+          <th *ngIf="buttonsAvailable"></th>
         </tr>
       </thead>
       <tfoot>
         <tr>
           <th *ngFor="let col of tableColumns"> {{ col.title }} </th>
-          <th></th>
+          <th *ngIf="buttonsAvailable"></th>
         </tr>
       </tfoot>
       <tbody>
         <tr *ngFor="let row of list$ | async">
           <td *ngFor="let col of tableColumns">
-            <span *ngIf="!col.htmlOutput; else elseBlock">
-              {{ row[col.key] | xPipe:col.pipes:col.pipeArgs }}
-            </span>
-            <ng-template #elseBlock>
-              <span [innerHTML]="col.htmlOutput(row[col.key])"></span>
-            </ng-template>
+            <span>{{ col.value(row) }}</span>
           </td>
-          <td>
+          <td *ngIf="buttonsAvailable">
             <div class="btn-group">
-              <button (click)="onSelect(row)" class="btn btn-info">
+              <button *ngIf="editAvailable" (click)="onEdit(row)" class="btn btn-info ms-2">
                 <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button *ngIf="deleteAvailable" (click)="onDelete(row)" class="btn btn-danger ms-2">
+                <i class="fas fa-trash-alt"></i>
               </button>
             </div>
           </td>

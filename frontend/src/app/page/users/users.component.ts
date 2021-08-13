@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService, ITableColumn } from 'src/app/service/config.service';
+import { IDataTableColumn } from 'src/app/common/data-table/data-table.component';
+import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -9,20 +10,16 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UsersComponent implements OnInit {
 
-  readonly tableColumns: ITableColumn[] = [
-    {key: "firstName", title: "First Name"},
-    {key: "lastName", title: "Last Name"},
-    {key: "email", title: "Email"},
-    {key: "address", title: "Address",
-      pipes: [ConfigService.getSubProperty],
-      pipeArgs: [['country', 'city']]
-    },
+  readonly tableColumns: IDataTableColumn<User>[] = [
+    { title: "First Name", value: user => user.firstName },
+    { title: "Last Name", value: user => user.lastName },
+    { title: "Email", value: user => user.email },
+    { title: "Address", value: user => `${user.address.country}, ${user.address.city}` }
   ];
 
   readonly list$ = this.userService.getAll();
 
   constructor(
-    private config: ConfigService,
     private userService: UserService,
   ) { }
 

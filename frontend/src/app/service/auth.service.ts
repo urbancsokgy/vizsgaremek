@@ -42,6 +42,10 @@ export class AuthService {
     return this.currentUserSubject$.pipe(map(data => data?.user || null));
   }
 
+  get currentUser(): User|null {
+    return this.currentUserSubject$.value?.user || null;
+  }
+
   login(loginData: LoginData): Observable<void> {
     return this.http.post<{user: User, accessToken: string}>(
       this.loginUrl,

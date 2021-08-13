@@ -1,16 +1,6 @@
 import { Injectable } from '@angular/core';
 import { get } from 'lodash';
 
-export interface ITableColumn {
-  title: string;
-  key: string;
-  hidden?: boolean;
-  outputTransform?: any;
-  htmlOutput?: any;
-  pipes?: any[];
-  pipeArgs?: any[][];
-}
-
 @Injectable({
   providedIn: 'root'
 })
