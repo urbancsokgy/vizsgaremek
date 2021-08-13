@@ -24,6 +24,11 @@ const UserSchema = mongoose.Schema({
             required: true,
             default: ''
         },
+        street:{
+            type: String,
+            required: true,
+            default: ''
+        },
         zip: {
             type: Number,
             required: true,

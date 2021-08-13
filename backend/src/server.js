@@ -22,6 +22,7 @@ mongoose.Promise = global.Promise;
 //         process.exit();
 //     });
 
+// Felhő kapcsolat
 const Connection_String =
   `mongodb+srv://vizsgaremek:${process.env.DB_PASSW}@cluster0.1egzp.mongodb.net/bookstoreDB?retryWrites=true&w=majority`
   //"mongodb+srv://urbancsokgy:DiPqHPyh6k5MEfV9@cluster0.xxaol.mongodb.net/chats?retryWrites=true&w=majority";
@@ -31,10 +32,11 @@ const options = {
   useUnifiedTopology: true
 };
 const connectionCallback = () => {
-  console.log("Connection OK");
+  console.log("Mongoose Connection OK");
 };
-mongoose.connect(Connection_String, options, connectionCallback);
+mongoose.connect(Connection_String, options, connectionCallback)
 
+//------------------------
 app.use(cors());
 app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.static('public'));
