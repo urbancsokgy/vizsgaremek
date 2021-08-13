@@ -12,11 +12,11 @@ import { AuthService } from './auth.service';
 export class JwtInterceptorInterceptor implements HttpInterceptor {
 
   constructor(
-    private auth: AuthService,
+    private authService: AuthService,
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.auth.lastToken;
+    const token = this.authService.currentToken;
     if (token) {
       request = request.clone({
         setHeaders: {

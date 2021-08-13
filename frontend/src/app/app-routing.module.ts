@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorsComponent } from './page/authors/authors.component';
+import { CategoriesComponent } from './page/categories/categories.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { LoginComponent } from './page/login/login.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
@@ -14,6 +16,14 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent,
+  },
+  {
+    path: 'authors',
+    component: AuthorsComponent,
   },
   {
     path: 'login',

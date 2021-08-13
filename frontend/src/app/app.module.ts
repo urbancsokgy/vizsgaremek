@@ -20,6 +20,8 @@ import { JwtInterceptorInterceptor } from './service/jwt-interceptor.interceptor
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { SignupComponent } from './page/signup/signup.component';
+import { CategoriesComponent } from './page/categories/categories.component';
+import { AuthorsComponent } from './page/authors/authors.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { SignupComponent } from './page/signup/signup.component';
     LoginComponent,
     NotFoundComponent,
     DashboardComponent,
-    SignupComponent
+    SignupComponent,
+    CategoriesComponent,
+    AuthorsComponent
   ],
   imports: [
     BrowserModule,

@@ -34,12 +34,12 @@ export class AuthService {
     }
   }
 
-  get lastToken(): string|null {
-    return this.currentUserSubject$.value?.token || null;
-  }
-
   get currentUser$(): Observable<User|null> {
     return this.currentUserSubject$.pipe(map(data => data?.user || null));
+  }
+
+  get currentToken(): string|null {
+    return this.currentUserSubject$.value?.token || null;
   }
 
   get currentUser(): User|null {

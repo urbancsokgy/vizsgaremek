@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   private _error: string|null = null;
 
   constructor(
-    private auth: AuthService,
+    private authService: AuthService,
     private router: Router,
   ) { }
 
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this._error = null;
 
-    this.auth.login(this.loginData).toPromise()
+    this.authService.login(this.loginData).toPromise()
       .then(() => this.router.navigate(['/']))
       .catch((err: HttpErrorResponse) => {
         this._error = err.status === 401 ? 'Invalid credentials' : 'Failed to log in, try again later';

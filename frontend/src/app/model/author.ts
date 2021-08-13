@@ -1,0 +1,6 @@
+export interface Author {
+  _id: number;
+  firstName: string;
+  lastName: string;
+  born?: number;
+}

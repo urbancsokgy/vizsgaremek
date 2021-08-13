@@ -1,5 +1,4 @@
 const express = require('express');
-const config = require('config');
 const logger = require('./config/logger');
 const app = express();
 const bodyParser = require('body-parser');
@@ -10,30 +9,20 @@ const mongoose = require('mongoose');
 const cors = require('./config/cors');
 mongoose.Promise = global.Promise;
 
-// const { host } = config.get('database');
-// mongoose
-//     .connect(`mongodb://${host}`, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true
-//     })
-//     .then(() => logger.info('MongoDB connection has been established successfully.'))
-//     .catch(err => {
-//         logger.error(err);
-//         process.exit();
-//     });
-
 // Felhő kapcsolat
-const Connection_String =
+const connectionString =
   `mongodb+srv://vizsgaremek:${process.env.DB_PASSW}@cluster0.1egzp.mongodb.net/bookstoreDB?retryWrites=true&w=majority`
 const options = {
   useNewUrlParser: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
 };
-const connectionCallback = () => {
-  console.log("Mongoose Connection OK");
-};
-mongoose.connect(Connection_String, options, connectionCallback)
+mongoose.connect(connectionString, options)
+  .then(() => logger.info('MongoDB connection has been established successfully.'))
+  .catch(err => {
+    logger.error(err);
+    process.exit();
+  });
 
 //------------------------
 app.use(cors());

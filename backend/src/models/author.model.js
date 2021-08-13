@@ -9,7 +9,7 @@ const AuthorSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    born: Date
+    born: Number
 }, {
     timestamps: true
 });
