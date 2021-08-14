@@ -40,9 +40,9 @@ app.use('/api/books', require('./routes/book.route'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(YAML.load('./docs/swager.yaml')));
 
 // fallback for Angular routes
-app.use('/*', (req, res, next) => {
-    res.sendFile('index.html', { root: __dirname + '/../public' });
-});
+// app.use('/*', (req, res, next) => {
+//     res.sendFile('index.html', { root: __dirname + '/../public' });
+// });
 
 app.use((err, req, res, next) => {
     res.status(err.statusCode || 500);

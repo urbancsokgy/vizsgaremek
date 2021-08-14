@@ -1,11 +1,14 @@
 const Model = require('../models/user.model');
 
-exports.create = modelData => {
-    // TODO
-    // modelData.role='user'
-    const model = new Model(modelData);
-    return model.save();
-};
+exports.create = model => {
+  return Model.count({ email: model.email })
+    .then(existingWithThisEmail => {
+      if (existingWithThisEmail > 0) {
+        throw new Error('Email already used');
+      }
+    })
+    .then(() => model.save());
+}
 
 exports.findAll = () => Model.find().populate();
 

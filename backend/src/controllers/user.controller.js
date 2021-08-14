@@ -3,13 +3,16 @@ const service = require('../services/user.service');
 const model = require('../models/user.model');
 
 exports.register = (req, res, next) => {
-    const validationErrors = new model(req.body).validateSync();
+    const entity = new model(req.body);
+    entity.role = 'user';
+
+    const validationErrors = entity.validateSync();
     if (validationErrors) {
         return next(new createError.BadRequest(validationErrors));
     }
 
-    return service.create(req.body)
-        .then(created => res.status(201).json(created))
+    return service.create(entity)
+        .then(() => res.status(201))
         .catch(err => next(new createError.InternalServerError(err.message)));
 };
 

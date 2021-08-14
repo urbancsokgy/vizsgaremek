@@ -1,7 +1,10 @@
 <div class="container px-4">
   <app-data-table
     title="Category List"
+    [editAvailable]="isAdmin"
+    [deleteAvailable]="isAdmin"
     [tableColumns]="tableColumns"
-    [list$]="list$">
+    [list$]="list$"
+    (edit)="edit($event)">
   </app-data-table>
 </div>

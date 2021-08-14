@@ -19,4 +19,12 @@ export class AuthorService {
   getAll(): Observable<Author[]> {
     return this.http.get<Author[]>(this.baseUrl);
   }
+
+  findById(id: string): Observable<Author> {
+    return this.http.get<Author>(`${this.baseUrl}/${id}`);
+  }
+
+  update(author: Author): Observable<Author> {
+    return this.http.put<Author>(`${this.baseUrl}/${author._id}`, author);
+  }
 }

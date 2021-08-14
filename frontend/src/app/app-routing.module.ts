@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorEditComponent } from './page/author-edit/author-edit.component';
 import { AuthorsComponent } from './page/authors/authors.component';
+import { BookEditComponent } from './page/book-edit/book-edit.component';
+import { BooksComponent } from './page/books/books.component';
 import { CategoriesComponent } from './page/categories/categories.component';
+import { CategoryEditComponent } from './page/category-edit/category-edit.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { LoginComponent } from './page/login/login.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
@@ -19,11 +23,42 @@ const routes: Routes = [
   },
   {
     path: 'categories',
-    component: CategoriesComponent,
+    children: [
+      {
+        path: '',
+        component: CategoriesComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: CategoryEditComponent
+      }
+    ]
   },
   {
     path: 'authors',
-    component: AuthorsComponent,
+    children: [
+      {
+        path: '',
+        component: AuthorsComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: AuthorEditComponent
+      }
+    ]
+  },
+  {
+    path: 'books',
+    children: [
+      {
+        path: '',
+        component: BooksComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: BookEditComponent
+      }
+    ]
   },
   {
     path: 'login',

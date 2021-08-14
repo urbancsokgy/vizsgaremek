@@ -21,6 +21,6 @@ export class UserService {
   }
 
   signUp(data: SignUpData): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/register`, data);
+    return this.http.post<void>(this.baseUrl, data);
   }
 }

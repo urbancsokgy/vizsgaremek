@@ -1,13 +1,11 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeHu from '@angular/common/locales/hu';
 
 registerLocaleData(localeHu);
-
-import { AreusFormModule } from './areus-form/areus-form.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +20,11 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { SignupComponent } from './page/signup/signup.component';
 import { CategoriesComponent } from './page/categories/categories.component';
 import { AuthorsComponent } from './page/authors/authors.component';
+import { BooksComponent } from './page/books/books.component';
+import { AuthorNamePipe } from './pipe/author-name.pipe';
+import { CategoryEditComponent } from './page/category-edit/category-edit.component';
+import { AuthorEditComponent } from './page/author-edit/author-edit.component';
+import { BookEditComponent } from './page/book-edit/book-edit.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +38,19 @@ import { AuthorsComponent } from './page/authors/authors.component';
     DashboardComponent,
     SignupComponent,
     CategoriesComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    BooksComponent,
+    AuthorNamePipe,
+    CategoryEditComponent,
+    AuthorEditComponent,
+    BookEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
-    AreusFormModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'hu-HU'},
@@ -51,6 +59,7 @@ import { AuthorsComponent } from './page/authors/authors.component';
       useClass: JwtInterceptorInterceptor,
       multi: true
     },
+    AuthorNamePipe
   ],
   bootstrap: [AppComponent]
 })

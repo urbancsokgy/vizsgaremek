@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "jest",
+    "nodemon": "nodemon",
     "docker:build": "docker build -t bookstore-api:latest .",
     "docker-compose:up": "docker-compose up",
     "dev": "concurrently --kill-others \"docker-compose up\" \"node watcher.js\""
