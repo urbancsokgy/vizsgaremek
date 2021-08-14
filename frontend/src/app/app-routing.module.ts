@@ -55,6 +55,10 @@ const routes: Routes = [
         component: BooksComponent,
       },
       {
+        path: 'create',
+        component: BookEditComponent,
+      },
+      {
         path: 'edit/:id',
         component: BookEditComponent
       }

@@ -1,4 +1,5 @@
-<div class="container px-4">
+<div class="container px-4 mt-5">
+  <button *ngIf="isAdmin" class="btn btn-primary" (click)="createNew()">Create New</button>
   <app-data-table
     title="Book List"
     [editAvailable]="isAdmin"

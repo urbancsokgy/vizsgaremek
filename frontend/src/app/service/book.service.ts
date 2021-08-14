@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Book, BookEdit } from '../model/book';
+import { Book, BookEdit, BookSave } from '../model/book';
 import { ConfigService } from './config.service';
 
 @Injectable({
@@ -26,5 +26,9 @@ export class BookService {
 
   update(book: BookEdit): Observable<Book> {
     return this.http.put<Book>(`${this.baseUrl}/${book._id}`, book);
+  }
+
+  save(book: BookSave): Observable<Book> {
+    return this.http.post<Book>(`${this.baseUrl}`, book);
   }
 }

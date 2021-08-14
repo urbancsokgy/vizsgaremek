@@ -37,6 +37,6 @@ export class AuthorEditComponent implements OnInit {
 
     this.authorService.update(author).toPromise()
       .then(() => this.router.navigate(['/authors']))
-      .catch((err: HttpErrorResponse) => this._error = err.error?.message || 'Failed to update author');
+      .catch((err: HttpErrorResponse) => this._error = err.error?.message || 'Failed to save author');
   }
 }

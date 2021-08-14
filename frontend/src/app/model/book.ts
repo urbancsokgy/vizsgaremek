@@ -2,7 +2,6 @@ import { Author } from "./author";
 import { Category } from "./category";
 
 interface BookData {
-  _id: string;
   title: string;
   description?: string;
   price: number;
@@ -10,11 +9,16 @@ interface BookData {
 }
 
 export interface Book extends BookData {
+  _id: string;
   category?: Category;
   author: Author;
 }
 
-export interface BookEdit extends BookData {
+export interface BookSave extends BookData {
   category?: string;
   author: string;
+}
+
+export interface BookEdit extends BookSave {
+  _id: string;
 }

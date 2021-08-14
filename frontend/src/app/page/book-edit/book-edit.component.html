@@ -29,7 +29,8 @@
         </div>
         <div class="mt-2">
           <label class="form-label">Category</label>
-          <select [(ngModel)]="book.category" name="category" class="form-select" required>
+          <select [(ngModel)]="book.category" name="category" class="form-select">
+            <option [ngValue]="null">-</option>
             <option *ngFor="let category of (categories$ | async)" [value]="category._id">{{ category.name }}</option>
           </select>
         </div>
