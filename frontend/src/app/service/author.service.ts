@@ -27,4 +27,8 @@ export class AuthorService {
   update(author: Author): Observable<Author> {
     return this.http.put<Author>(`${this.baseUrl}/${author._id}`, author);
   }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
 }

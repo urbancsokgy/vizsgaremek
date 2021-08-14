@@ -17,7 +17,7 @@ export class AuthorsComponent implements OnInit {
     { title: "Born at", value: author => author.born?.toString() || 'unknown' },
   ];
 
-  readonly list$ = this.authorService.getAll();
+  list$ = this.authorService.getAll();
 
   constructor(
     private authorService: AuthorService,
@@ -35,5 +35,15 @@ export class AuthorsComponent implements OnInit {
 
   edit(author: Author): void {
     this.router.navigate(['/authors/edit/', author._id]);
+  }
+
+  delete(author: Author): void {
+    if (!window.confirm('Are you sure you wish to delete this author?')) {
+      return;
+    }
+
+    this.authorService.delete(author._id).toPromise()
+      .then(() => this.list$ = this.authorService.getAll())
+      .catch(() => window.alert('Failed to delete author'));
   }
 }

@@ -31,4 +31,8 @@ export class BookService {
   save(book: BookSave): Observable<Book> {
     return this.http.post<Book>(`${this.baseUrl}`, book);
   }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
 }

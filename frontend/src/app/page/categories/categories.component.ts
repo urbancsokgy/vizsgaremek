@@ -16,7 +16,7 @@ export class CategoriesComponent implements OnInit {
     { title: "Name", value: category => category.name },
   ];
 
-  readonly list$ = this.categoryService.getAll();
+  list$ = this.categoryService.getAll();
 
   constructor(
     private categoryService: CategoryService,
@@ -33,5 +33,15 @@ export class CategoriesComponent implements OnInit {
 
   edit(category: Category): void {
     this.router.navigate(['/categories/edit/', category._id])
+  }
+
+  delete(category: Category): void {
+    if (!window.confirm('Are you sure you wish to delete this category?')) {
+      return;
+    }
+
+    this.categoryService.delete(category._id).toPromise()
+      .then(() => this.list$ = this.categoryService.getAll())
+      .catch(() => window.alert('Failed to delete category'));
   }
 }

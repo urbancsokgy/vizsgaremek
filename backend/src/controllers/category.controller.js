@@ -20,6 +20,12 @@ exports.create = (req, res, next) => {
         .catch(err => internalServerError(next, err));
 };
 
+exports.count = (req, res, next) => {
+    return service.count()
+        .then(entity => res.json(entity))
+        .catch(err => internalServerError(next, err));
+};
+
 exports.findAll = (req, res, next) => {
     return service.findAll()
         .then(entity => res.json(entity))
@@ -50,6 +56,6 @@ exports.update = (req, res, next) => {
 
 exports.delete = (req, res, next) => {
     return service.delete(req.params.id)
-        .then(() => res.json({}))
+        .then(() => res.end())
         .catch(err => internalServerError(next, err));
 };

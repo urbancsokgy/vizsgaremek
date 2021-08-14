@@ -4,6 +4,7 @@ const adminOnly = require('../auth/adminOnly');
 const controller = require('../controllers/category.controller');
 
 router.post('/', restricted, adminOnly, controller.create);
+router.get('/count', restricted, controller.count);
 router.get('/', restricted, controller.findAll);
 router.get('/:id', restricted, controller.findOne);
 router.put('/:id', restricted, adminOnly, controller.update);

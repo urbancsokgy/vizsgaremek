@@ -23,7 +23,7 @@ export class DataTableComponent<T> implements OnInit {
   @Output() edit = new EventEmitter<T>();
   @Output() delete = new EventEmitter<T>();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }

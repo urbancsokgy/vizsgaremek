@@ -12,7 +12,7 @@ exports.register = (req, res, next) => {
     }
 
     return service.create(entity)
-        .then(() => res.status(201))
+        .then(() => res.status(201).end())
         .catch(err => next(new createError.InternalServerError(err.message)));
 };
 

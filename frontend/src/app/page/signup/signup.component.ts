@@ -71,6 +71,6 @@ export class SignupComponent implements OnInit {
 
     this.userService.signUp(data).toPromise()
       .then(() => this.router.navigate(['/login']))
-      .catch((err: HttpErrorResponse) => this._error = err.error.message || 'Failed to sign up');
+      .catch(() => 'Failed to sign up');
   }
 }

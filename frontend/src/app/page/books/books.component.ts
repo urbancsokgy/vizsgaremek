@@ -21,7 +21,7 @@ export class BooksComponent implements OnInit {
     { title: 'Quantity', value: book => book.quantity > 0 ? book.quantity.toString() : 'out of stock' },
   ];
 
-  readonly list$ = this.bookService.getAll();
+  list$ = this.bookService.getAll();
 
   constructor(
     private bookService: BookService,
@@ -39,6 +39,16 @@ export class BooksComponent implements OnInit {
 
   edit(book: Book): void {
     this.router.navigate(['/books/edit/', book._id]);
+  }
+
+  delete(book: Book): void {
+    if (!window.confirm('Are you sure you wish to delete this book?')) {
+      return;
+    }
+
+    this.bookService.delete(book._id).toPromise()
+      .then(() => this.list$ = this.bookService.getAll())
+      .catch(() => window.alert('Failed to delete book'));
   }
 
   createNew(): void {

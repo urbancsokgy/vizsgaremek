@@ -20,7 +20,7 @@
           <td *ngFor="let col of tableColumns">
             <span>{{ col.value(row) }}</span>
           </td>
-          <td *ngIf="buttonsAvailable">
+          <td *ngIf="buttonsAvailable" class="button-col">
             <div class="btn-group">
               <button *ngIf="editAvailable" (click)="onEdit(row)" class="btn btn-info ms-2">
                 <i class="fas fa-pencil-alt"></i>
