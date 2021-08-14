@@ -20,14 +20,13 @@ const OrderSchema = mongoose.Schema({
     timestamps: true
 });
 
+const Order = mongoose.model('Order', OrderSchema, 'orders');
 // ----------------------
-const Order = mongoose.model('Order', OrderSchema, 'orders')
-Order.createCollection().then(function(collection) {
-    collection.name='orders'
-    console.log('Collection is created!');
-    console.log('Collection name!', collection.name);
-
-  });
+// Order.createCollection().then(function(collection) {
+//     collection.name='orders'
+//     console.log('Collection is created!');
+//     console.log('Collection name!', collection.name);
+//   });
 //---------------------
 
-module.exports = mongoose.model('Order', OrderSchema);
+module.exports = Order;

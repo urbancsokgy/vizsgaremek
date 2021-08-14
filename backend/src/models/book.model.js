@@ -28,13 +28,14 @@ const BookSchema = mongoose.Schema({
 }, {
     timestamps: true
 });
-// ----------------------
-const Book = mongoose.model('Book', BookSchema, 'books')
-Book.createCollection().then(function(collection) {
-    collection.name='books'
-    console.log('Collection is created!');
-    console.log('Collection name!', collection.name);
 
-  });
+const Book = mongoose.model('Book', BookSchema, 'books');
+// ----------------------
+// Book.createCollection().then(function(collection) {
+//     collection.name='books'
+//     console.log('Collection is created!');
+//     console.log('Collection name!', collection.name);
+//   });
 //---------------------
-module.exports = mongoose.model('Book', BookSchema);
+
+module.exports = Book;

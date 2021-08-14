@@ -5,24 +5,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
-const mongoose = require('mongoose');
 const cors = require('./config/cors');
-mongoose.Promise = global.Promise;
-
-// Felhő kapcsolat
-const connectionString =
-  `mongodb+srv://vizsgaremek:${process.env.DB_PASSW}@cluster0.1egzp.mongodb.net/bookstoreDB?retryWrites=true&w=majority`
-const options = {
-  useNewUrlParser: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-};
-mongoose.connect(connectionString, options)
-  .then(() => logger.info('MongoDB connection has been established successfully.'))
-  .catch(err => {
-    logger.error(err);
-    process.exit();
-  });
 
 //------------------------
 app.use(cors());

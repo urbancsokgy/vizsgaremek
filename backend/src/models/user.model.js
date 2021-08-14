@@ -49,13 +49,13 @@ const UserSchema = mongoose.Schema({
 
 // automatically adds { password: String }
 UserSchema.plugin(require('mongoose-bcrypt'));
-// ----------------------
-const User = mongoose.model('User', UserSchema, 'users')
-User.createCollection().then(function(collection) {
-    collection.name='users'
-    console.log('Collection is created!');
-    console.log('Collection name!', collection.name);
 
-  });
+const User = mongoose.model('User', UserSchema, 'users');
+// ----------------------
+// User.createCollection().then(function(collection) {
+//     collection.name='users'
+//     console.log('Collection is created!');
+//     console.log('Collection name!', collection.name);
+//   });
 //---------------------
-module.exports = mongoose.model('User', UserSchema);
+module.exports = User;
