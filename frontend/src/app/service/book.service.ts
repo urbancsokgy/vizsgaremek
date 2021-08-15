@@ -15,6 +15,9 @@ export class BookService {
     private config: ConfigService,
     private http: HttpClient,
   ) {}
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`);
+  }
 
   getAll(): Observable<Book[]> {
     return this.http.get<Book[]>(this.baseUrl);

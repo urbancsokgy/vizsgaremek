@@ -15,6 +15,9 @@ export class AuthorService {
     private config: ConfigService,
     private http: HttpClient,
   ) {}
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`);
+  }
 
   getAll(): Observable<Author[]> {
     return this.http.get<Author[]>(this.baseUrl);

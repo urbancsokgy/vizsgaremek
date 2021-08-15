@@ -15,6 +15,9 @@ export class UserService {
     private config: ConfigService,
     private http: HttpClient,
   ) {}
+  count(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`);
+  }
 
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl);
