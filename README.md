@@ -1,234 +1,115 @@
-# vizsgaremek
  User story - Adminisztrátori szerepkör
 ---
 ---
 ## _**1. Főoldal**_
 ---
 **1. agilis felhasználói történet:**
-> _A főoldal egy összegző képernyő a webshop ismertetőjével, navigációs lehetőségekkel és néhány kiemelt termék ismertetésével. Tartalmazza a belépési és navigációs lehetőségeket.
+> _A főoldal egy összegző képernyő a Bookstore webshop ismertetőjével, navigációs lehetőségekkel és néhány összegző adattal. Tartalmazza a belépési és navigációs lehetőségeket.
 
 **Elfogadási kritérium:**  
 
-Egy mobiloptimalizált, látványos felületen, látványos képpel hangsúlyozza a webshop profilját és könnyű eligazodást biztosít felhasználói és adminisztrátori szinten is.
+Egy mobiloptimalizált felületen, leírja a webshop profilját, regisztrációs és belépési lehetőséget biztosít. Felhasználói belépés után néhány listázó funció érhető el,  az adminisztrátor eléri a feladatkörből adódó funkciókat.
 ---
-## _**2. Kerékpár adatbázis**_
+## _**2. Könyvesbolt adminsztrátori felület**_
 ---
 **1. agilis felhasználói történet:**
->Egy helyről indulva áttekinthetők a webshop termékei, a termékek adatai. Lehetőséget ad a CRUD műveletek elvégzéséhez szükséges oldalak elérésére
+>Egy helyről indulva áttekinthetők a webshop termékei, a termékek adatai. Lehetőséget ad a CRUD műveletek elvégzéséhez szükséges oldalak elérésére, a **megfelelő authentikáció** után.
 
 **Elfogadási kritérium:**  
 
-Az oldalra navigálva megjelenik az összes termék adata egy helyen, szűrhető, rendezhető formában.  
-Ezek az adatok a termék legfontosabb jellemzői, az ár,  a raktárkészlet, valamint egy leírás mező ahol változó mennyiségű kiegészítő információ helyezhető el. A leírást egy, vagy több kép egészíti ki.
-> Opcióként a nézet (kártyák mérete) változtathazó
+A főoldalról elérhető a könyvek és a hozzájuk kapcsolt adatbázis részek adata, (továbbfejlesztés után szűrhető, rendezhető formában). 
+Elérhető a felhasználók listája. A felhasználók regisztráció után kerülnek az adatbázisba felhasználói szerepkörrel. Adminisztátor biztonsági okokból adabázis szinten hozható létre, az API gondoskodik róla, hogy a "role" regisztáció esetén csak felhasználó lehessen.
+Listázott adatok:
+A könyve kaktegóriái, a szerzők, könyvek, felhasználók.
+A könyvek legfontosabb jellemzői: cím, szerző, kategória, ár,  a raktárkészlet. A leírás mező, ahol változó mennyiségű kiegészítő információ helyezhető el, a létrehozás ablakában elérhető.
+
 ---
----
+
 
 **2. agilis felhasználói történet:**
 
-> _Új termék adatai vehetők fel._
+> _Új könyv adatai vehetők fel._
 
 **Elfogadási kritérium:**  
-- A kötelező adatok megadásával egy új kerékpár adatait lehet felvinni, a módosítás megjelenik a listázó oldalon, létrejön a termék adatlapja.
-- Az oldalon lehetőség van arra, hogy az összes terméket listázó oldalra navigáljon vissza az alkalmazás.
-
+- A kötelező adatok megadásával egy új könyv adatait lehet felvinni. A kapcsolódó adadtok lenyíló menüből választhatóak ki.  A módosítás megjelenik a listázó oldalon, létrejön a termék adatlapja.
+- A létrehozás az összes könyvet listázó oldalra navigál vissza.
 ---
 
 **3. agilis felhasználói történet:**
 
-> _A termék adatai szerkeszthetők._
+> _A termék, a kategóriák és a szerzők adatai szerkeszthetők._
 
 **Elfogadási kritérium:**  
-- A kerékpár kártyáján kattintva a választott bicikli adatait lehet szerkeszteni, a módosítás megjelenik a listázó oldalon és az adatlapján is.
-- Az oldalon lehetőség van arra, hogy az összes kerékpárt listázó oldalra navigáljon vissza az alkalmazás.
+Az adatok a listázó oldalakon látható sorok végén található gombok segítségével módosíthatók, vagy törölhetők. **Ezeket a funkciókat csak az adminisztrátor érheti el, más szerepkörrel a gombok nem jelennek meg.** A szerkesztés után a listázó oldalakra navigálunk vissza. A módosítások megjelennek a listában.
 
 ---
 
 **4. agilis felhasználói történet:**
 
-> _A termék törölhető._
+> _A termék, a kategóriák és a szerzők adatai törölhetők._
 
 **Elfogadási kritérium:**  
-- A termék kiválasztásával törölhető a rekord.
-- A törlést követően frissül a listaoldal, ahol a már törölt kerékpár nem látható.
+- Az adatsor végén látható gomb segítségével az adat törölhető. A törlés szándéka megerősítést igényel. A felugró ablak segítségével megakadályozható a véletlen kattintásból adódó adatvesztés.
+- A törlést követően a listázó oldalon látható a változás, az adatbázisból törlődik az adat.
 
 ---
 
-**5. agilis felhasználói történet:**
-
-> _A biciklik kategóriák szerint listázhatók._
-
-**Elfogadási kritérium:**  
-A kategória kiválasztásával frissül a listaoldal, ahol csak a szűrt adatok láthatók.
-
 ---
-
-**6. agilis felhasználói történet:**
-
-> _Bármilyen kulcsszóra lehet keresni egy választott kategórián belül._
-
-**Elfogadási kritérium:**  
-A kategória kiválasztásával és a kulcsszónak megfelelően frissül a listaoldal, ahol csak a szűrt adatok láthatók.
-
----
-
-**7. agilis felhasználói történet:**
-
-> _Különbözőképpen sorrendbe rendezhetőek a termékek egyes kategóriái._
-
-**Elfogadási kritérium:**  
-- Termékjellemző adatok alapján növekvő és csökkenő sorrendben lehet rendezni a kerékpárokat.
----
----
-## _**3. Felhasználói adatbázis**_
+## _**3. Felhasználói adatbázis (Users)**_
 ---
 **1. agilis felhasználói történet:**
->Egy helyről indulva áttekinthetők a felhasználók adatai. Lehetőséget ad a CRUD műveletek elvégzéséhez szükséges oldalak elérésére
-
+>Egy helyről indulva áttekinthetők a felhasználók adatai. A létrehozás a regisztrációval történik.  Módosítási lehetőségek az adat jellegéből adódóan nincsenek. Admin felhasználó adatbázis szinten hozható létre.
 **Elfogadási kritérium:**  
 
-Az oldalra navigálva megjelenik az összes felhasználó adata egy helyen, szűrhető, rendezhető formában.  
+Az oldalra navigálva megjelenik az összes felhasználó adata egy helyen.  
 Ezek az adatok a felhasználó legfontosabb jellemzői, a regisztrációs, kapcsolattartási, számlázási adatok, valamint a felhasználó szerepköre.
-> Opcióként a nézet (kártyák mérete) változtathazó, részletes, vagy összegző formában.
----
----
-
-**2. agilis felhasználói történet:**
-
-> _Új felhasználó adatai vehetők fel (nem feltéstlenül szükséges, esetleg regisztrációs probléma esetén)._
-
-**Elfogadási kritérium:**  
-- A kötelező adatok megadásával egy új felhasználó adatait lehet felvinni, a módosítás megjelenik a listázó oldalon, létrejön a felhasználó adatlapja.
-- Az oldalon lehetőség van arra, hogy az összes felhasználó listázó oldalra navigáljon vissza az alkalmazás.
+Adatok: firstname, lastname, email, password (nincs listázva, titkosított), role (nincs listázva), address (beágyazott objektum): country, city, street, building, zip.
 
 ---
-
-**3. agilis felhasználói történet:**
-
-> _A felhasználó adatai szerkeszthetők (pl, egy telefonos egyeztetés esetén a számlázási cím módosítása)._
-
-**Elfogadási kritérium:**  
-- A felhasználó kártyáján kattintva a választott felhasználó adatait lehet szerkeszteni, a módosítás megjelenik a listázó oldalon és az adatlapján is.
-- Az oldalon lehetőség van arra, hogy az összes felhasználót listázó oldalra navigáljon vissza az alkalmazás.
-
 ---
-
-**4. agilis felhasználói történet:**
-
-> _A felhasználó törölhető._
-
-**Elfogadási kritérium:**  
-- A felhasználó kiválasztásával törölhető a rekord.
-- A törlést követően frissül a listaoldal, ahol a már törölt felhasználó nem látható.
-
----
-
-**5. agilis felhasználói történet:**
-
-> _A felhasználók megadott szempont szerint listázhatók._
-
-**Elfogadási kritérium:**  
-A szempont kiválasztásával frissül a listaoldal, ahol csak a szűrt adatok láthatók.
-
----
-
-**6. agilis felhasználói történet:**
-
-> _Bármilyen kulcsszóra lehet keresni._
-
-**Elfogadási kritérium:**  
-A kulcsszónak megfelelően frissül a listaoldal, ahol csak a szűrt adatok láthatók.
-
----
-
-**7. agilis felhasználói történet:**
-
-> _Különbözőképpen sorrendbe rendezhetőek a felhasználók._
-
-**Elfogadási kritérium:**  
-- Szűrési adatok alapján növekvő és csökkenő sorrendben lehet rendezni a felhasználókat.
----
----
-## _**4. Rendelési adatbázis**_
+## _**4. Szerző adatbázis (authors)**_
 ---
 **1. agilis felhasználói történet:**
->Egy helyről indulva áttekinthetők a rendelések adatai. Lehetőséget ad a CRUD műveletek elvégzéséhez szükséges oldalak elérésére
+>Egy helyről indulva áttekinthetők a szerzők adatai. Lehetőséget ad a szerkesztési, törlési műveletek elvégzésére.
 
 **Elfogadási kritérium:**  
 
-Az oldalra navigálva megjelenik az összes rendelés() adata egy helyen, szűrhető, rendezhető formában.  
-Ezek az adatok a felhasználó és a megrendelt termék adatait is tartalmazzák. Az adatokból számla készíthető.
-> Opcióként a nézet (kártyák mérete) változtathazó, részletes, vagy összegző formában.
+Az oldalra navigálva megjelenik az összes szerző adata.  
+Adatok: fistname, lastname, born.
+> A listázó oldal a nevet Name mezőben egyben mutatja (pipe segítségével), de a szerkesztésnél az adatok külön input mezőben szerepelnek.
 ---
 ---
 
-**2. agilis felhasználói történet:**
-
->Számla készíthető a felhasználó és a termék adatainak összefésülésével
-
-**Elfogadási kritérium:**  
-- A megrendelés egyedi oldaláról elkészíthető a számla és bekerül a megrendelt termékek adatbázisba (véglegesített számlák)
----
-
-**3. agilis felhasználói történet:**
-
-> _A megrendelés adatai szerkeszthetők (pl, egy telefonos egyeztetés esetén a számlázási cím módosítása)._
-
-**Elfogadási kritérium:**  
-- A megrendelés adatainak módosítása minden érintett adatbázisban frissül.
-
----
-
-**4. agilis felhasználói történet:**
-
-> _A megrendelés törölhető._
-
-**Elfogadási kritérium:**  
-- A rendelés kiválasztásával törölhető a rekord.
-- A törlést követően frissül a listaoldal, ahol a már törölt megrendelés nem látható.
----
-
-**5. agilis felhasználói történet:**
-
-> _A rendelések megadott szempont szerint listázhatók._
-
-**Elfogadási kritérium:**  
-A szempont kiválasztásával frissül a listaoldal, ahol csak a szűrt adatok láthatók.
-
----
-
-**6. agilis felhasználói történet:**
-
-> _Bármilyen kulcsszóra lehet keresni._
-
-**Elfogadási kritérium:**  
-A kulcsszónak megfelelően frissül a listaoldal, ahol csak a szűrt adatok láthatók.
-
----
-
-**7. agilis felhasználói történet:**
-
-> _Különbözőképpen sorrendbe rendezhetőek a rendelések._
-
-**Elfogadási kritérium:**  
-- Szűrési adatok alapján növekvő és csökkenő sorrendben lehet rendezni a megrendeléseket.
----
----
-## _**5. Számlák adatbázisa**_
+## _**5. kategóriák adatbázisa**_
 ---
 **1. agilis felhasználói történet:**
->Egy helyről indulva áttekinthetők a számlák adatai. Lehetőséget ad a CRUD műveletek elvégzéséhez szükséges oldalak elérésére (A számlákkal kapcsolatos jogszabályi ismeretek hiánya miatt a részletezés jelen esetben hiányos)
+>Lehetőséget ad a szerkesztési, törlési műveletek elvégzésére a lista oldal gombjai segítségéve. 
 
 **Elfogadási kritérium:**  
 
-Az oldalra navigálva megjelenik az összes számla adata egy helyen, szűrhető, rendezhető formában.  Ha lehetőség van rá a szüksége műveletek elvégzésére lehetőséget ad.
+Az oldalra navigálva megjelenik az összes kategória adata egy helyen.
+Adata: name
 
 ---
+---
+## _**6. Könyvek adatbázisa (books)**_
+---
+**1. agilis felhasználói történet:**
+>Egy helyről indulva áttekinthetők a könyvek fő adatai. Lehetőséget ad a CRUD műveletek elvégzéséhez szükséges oldalak elérésére.
+
+**Elfogadási kritérium:**  
+
+Az oldalra navigálva megjelenik az összes könyv főbb adata egy helyen. 
+Adatok: title, author, catgory, price, quantity, description. Az author és catgory a kapcsolódó adatbázis ObjectId-ját tartalmazza. Ezen kapcsolódó adatok a backend populate segítségécel jelennek meg. 
+A create és editor oldalak a teljes adatot tartalmazzák. A kapcsolt adatok legördülő mezőből (select) választhatók ki.
+
 ---
 ---
 ## _***Kiegészítő megjegyzések!!!***_
 ---
 
-Kereskedelmi, webshop készítési és üzemeltetési ismeretek hiányában a jelenlegi "vázlat" módosításokat igényel például a rendelési-számlázási folyamat mélyebb megismerése után.
+A webshop adminisztrációs felülete nem teljes. A továbbfejlesztés néhány lehetősége pl. a szűrés, rendezés, a CRUD műveletek megvalósítása minden adatbázis elemre, ami a webshop jellegéből szükséges. Az API modelben meghatározott order kidolgozása, a számlázás biztosítása. 
+Minden CRUD műveletre van megvalósított elem. A weblap tartalmazza a JWT authentikáción alapuló belépést és kilépést, más szerepkörrel más funkciók érhetőek el.
+A SWAGGER dokumentikáció a bearer token megadása után 
 
 > Written with [StackEdit](https://stackedit.io/).
