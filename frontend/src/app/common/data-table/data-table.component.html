@@ -33,5 +33,9 @@
         </tr>
       </tbody>
     </table>
+        <!-- Betöltés ikon -->
+        <div *ngIf="!(list$ | async) " class="fa-3x col-12 text-center">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
   </div>
 </div>
