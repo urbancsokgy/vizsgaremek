@@ -6,7 +6,7 @@ exports.create = modelData => {
     const model = new Model(modelData);
     return model.save();
 };
-
+exports.count = () => Model.count();
 exports.findAll = () => Model.find().populate(populatedFields);
 
 exports.findOne = id => Model.findById(id).populate(populatedFields);

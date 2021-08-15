@@ -9,7 +9,7 @@ exports.create = model => {
     })
     .then(() => model.save());
 }
-
+exports.count = () => Model.count();
 exports.findAll = () => Model.find().populate();
 
 exports.findOne = id => Model.findById(id).populate();

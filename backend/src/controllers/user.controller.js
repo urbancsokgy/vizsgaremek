@@ -41,3 +41,9 @@ exports.update = (req, res, next) => {
         .then(entity => res.json(entity))
         .catch(err => next(new createError.InternalServerError(err.message)));
 };
+
+exports.count = (req, res, next) => {
+    return service.count()
+        .then(entity => res.json(entity))
+        .catch(err => internalServerError(next, err));
+};
