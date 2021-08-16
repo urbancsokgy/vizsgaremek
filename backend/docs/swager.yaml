@@ -143,7 +143,7 @@ paths:
         - bearerAuth: []
       responses:
         '200':
-          description: List of cars returned successfully
+          description: List of categories returned successfully
           content:
             application/json:
               schema:
