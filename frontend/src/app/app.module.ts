@@ -1,8 +1,8 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, CurrencyPipe } from '@angular/common';
 import localeHu from '@angular/common/locales/hu';
 
 registerLocaleData(localeHu);
@@ -25,6 +25,8 @@ import { AuthorNamePipe } from './pipe/author-name.pipe';
 import { CategoryEditComponent } from './page/category-edit/category-edit.component';
 import { AuthorEditComponent } from './page/author-edit/author-edit.component';
 import { BookEditComponent } from './page/book-edit/book-edit.component';
+import { OrdersComponent } from './page/orders/orders.component';
+import { UserNamePipe } from './pipe/user-name.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { BookEditComponent } from './page/book-edit/book-edit.component';
     CategoryEditComponent,
     AuthorEditComponent,
     BookEditComponent,
+    OrdersComponent,
+    UserNamePipe,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,10 @@ import { BookEditComponent } from './page/book-edit/book-edit.component';
       useClass: JwtInterceptorInterceptor,
       multi: true
     },
-    AuthorNamePipe
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'HUF' },
+    AuthorNamePipe,
+    UserNamePipe,
+    CurrencyPipe
   ],
   bootstrap: [AppComponent]
 })

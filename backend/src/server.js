@@ -19,6 +19,7 @@ app.use('/api/users', require('./routes/user.route'));
 app.use('/api/categories', require('./routes/category.route'));
 app.use('/api/authors', require('./routes/author.route'));
 app.use('/api/books', require('./routes/book.route'));
+app.use('/api/orders', require('./routes/order.route'));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(YAML.load('./docs/swager.yaml')));
 

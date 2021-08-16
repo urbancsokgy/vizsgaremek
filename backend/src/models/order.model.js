@@ -21,12 +21,12 @@ const OrderSchema = mongoose.Schema({
 });
 
 const Order = mongoose.model('Order', OrderSchema, 'orders');
-// ----------------------
+//----------------------
 // Order.createCollection().then(function(collection) {
 //     collection.name='orders'
 //     console.log('Collection is created!');
 //     console.log('Collection name!', collection.name);
 //   });
-//---------------------
+// //---------------------
 
 module.exports = Order;

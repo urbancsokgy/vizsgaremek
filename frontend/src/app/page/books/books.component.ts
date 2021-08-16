@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IDataTableColumn } from 'src/app/common/data-table/data-table.component';
@@ -17,7 +18,7 @@ export class BooksComponent implements OnInit {
     { title: "Title", value: book => book.title },
     { title: "Author", value: book => this.authorNamePipe.transform(book.author, true) },
     { title: "Category", value: book => book.category?.name || '?' },
-    { title: "Price (Ft)", value: book => `${book.price} Ft` },
+    { title: "Price (Ft)", value: book => this.currencyPipe.transform(book.price, 'HUF', 'symbol', '1.0-0') || book.price.toString() },
     { title: 'Quantity', value: book => book.quantity > 0 ? book.quantity.toString() : 'out of stock' },
   ];
 
@@ -28,6 +29,7 @@ export class BooksComponent implements OnInit {
     private authorNamePipe: AuthorNamePipe,
     private router: Router,
     private authService: AuthService,
+    private currencyPipe: CurrencyPipe,
   ) { }
 
   get isAdmin(): boolean {

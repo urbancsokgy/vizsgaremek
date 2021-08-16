@@ -2,7 +2,7 @@
 https://zellwk.com/blog/jest-and-mongoose/
 */
 
-//require('dotenv').config();
+require('dotenv').config();
 
 const app = require('./server');
 const supertest = require('supertest');
@@ -20,8 +20,8 @@ const Author = require('./models/author.model');
 describe('REST API integration tests', () => {
 
     beforeAll(async () => {
-        //const connectionString = `mongodb+srv://vizsgaremek:${process.env.DB_PASSW}@cluster0.1egzp.mongodb.net/bookstoreDB?retryWrites=true&w=majority`;
-        const connectionString = 'mongodb://localhost:27017/bookstoreDB?retryWrites=true&w=majority';
+        //const connectionString = 'mongodb://localhost:27017/bookstoreDB?retryWrites=true&w=majority';
+        const connectionString = `mongodb+srv://vizsgaremek:${process.env.DB_PASSW}@cluster0.1egzp.mongodb.net/bookstoreDBTest?retryWrites=true&w=majority`;
         await mongoose.connect(connectionString, {
             useNewUrlParser: true,
             useUnifiedTopology: true

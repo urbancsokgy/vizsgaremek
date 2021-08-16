@@ -2,7 +2,7 @@
 ## **1. Az alkalmazás**
 Az alkalmazás egy webshop adminisztrációs felülete. A megjelenített felület képes az autentikációra, a megfelelő jogokkal biztosítja a webshop adatainak lekérdezését és módosításást. 
 
- - Az API a **backend**, a fejlesztés során használt Angular a **frontend** mappában található. Ez a szerkezet a tanult minta alpján készült. 
+- Az API a **backend**, a fejlesztés során használt Angular a **frontend** mappában található. Ez a szerkezet a tanult minta alpján készült. 
 - Az adatbázist a MongoDB Atlas webszolgátatása tárolja (https://cloud.mongodb.com/.....)
 - Az alkalmazás Docker containerben fut a node:latest image felhsználásával.
 - Az alkalmazás **backend** könyvtára tartalmazza a **public** könyvtárba másolt "buildelt" Angular alkalmazást
@@ -15,6 +15,7 @@ Az alkalmazás egy webshop adminisztrációs felülete. A megjelenített felüle
 - Ha további fejlesztések szükségesek, akkor telepíteni kell az Angular keretrendszert az `npm i -g @angular/cli` paranccsal, majd a **frontend** könyvtárban futtatni az 'npm i' parancsot.
 
 ## **3. Az alkalmazás konfigurálása**
+
 - Mindkét könyvtár tartalmazza a package.json fájlban a futtatási scripteket.
 - A .env fájl mintája megtalálható a .env.example fájlban.
 - Az alapértelmezett port a 3000, de szüksége esetén megadható más a .env PORT = értékeként
@@ -25,7 +26,17 @@ Szükséges lehet:
 
 A megadott Docker container indítása és inicializálása:
 
- - > npm run docker-compose:up
+- > npm run docker-compose:up
+
+Belépés a következő email/jelszó párossal az összes funkció eléréséhez (admin):
+
+- adminuser@gmail.com
+- admin
+
+Belépés egy "user" jogosultsággal rendelező felhasználóval:
+
+- feketepeter@gmail.com
+- user
 
 ## **5. A végpontok dokumentációja**
 
